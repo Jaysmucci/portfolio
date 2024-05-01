@@ -1,18 +1,25 @@
 <%- include('./partials/head.ejs') %>
 <body>
-    <h1>Recent Blogs</h1>
+    <%- include('./partials/nav.ejs') %>
+    <!-- <h1>Recent Blogs</h1> -->
 
-        <div class="blogs-content">
+    <div class="blogs-content">
         <h1>All Blogs</h1>
-
-        <% if(blog.length > 0) { %>
-            <% blog.forEach(log => { %>
-                <h3 class="title"><%= log.title %></h3>
-                <p class="snippet"><%= log.snippet %></p>
-            <% }) %>
-            <% } else { %>
-                <p>blogs not found!</p>
-        <% } %>
+        <div class="blog-holder">
+            <% if(blog.length > 0) { %>
+                <div class="blog-title">
+                    <% blog.forEach(log  => { %>
+                        <a class="single" href="/blogs/<%= log._id %>">
+                            <h3 class="title"><%= log.title %></h3>
+                        </a>
+                        <p class="snippet"><%= log.snippet %></p>
+                        <h6 class="blog-body"><%= log.body %></h6>
+                <% }) %>
+                </div>
+                <% } else { %>
+                    <p>blogs not found!</p>
+            <% } %>
+        </div>
     </div>
 </body>
 <%- include('./partials/footer.ejs') %>

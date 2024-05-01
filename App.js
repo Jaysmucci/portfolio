@@ -1,13 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const blogRoutes = require('./routes/blogRoutes') 
 // express app
 const app = express();
 
 // connect to mongoDB
-const mongoUIR  = 'mongodb+srv://<jaysportfolio>:<port1234>@portfolio.l34rgxu.mongodb.net/';
+// const mongoUIR  = 'mongodb+srv://<jaysportfolio>:<port1234>@portfolio.l34rgxu.mongodb.net/';
+const mongoUIR = 'mongodb+srv://jaysportfolio:port1234@portfolio.l34rgxu.mongodb.net/Jays-portfolio?retryWrites=true&w=majority&appName=portfolio'
 mongoose.connect(mongoUIR)
-.then((result) => console.log('conneted successfully')).catch(
+.then((result) => console.log('connected successfully')).catch(
     (err) => console.log(err)
 );
 
@@ -20,25 +22,18 @@ app.listen(3000)
 
 // middleware and static files
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
 
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Home'})
-})
+    res.render('index', {title: 'Home'});
+}) 
 
 app.get('/projects', (req, res) => {
     res.render('projects', {title: 'projects'})
 })
 
-app.get('/blogs', (req, res) => {
-    const blog = [
-        // {title:'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-        // {title:'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-        // {title:'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    ]
-    res.render('blogs', {title: 'blogs', blog})
-})
 
 app.get('/about', (req, res) => {
     res.render('about', {title: 'About'})
@@ -55,9 +50,9 @@ app.get('/contact', (req, res) => {
     res.render('contact', {title: 'contact'})
 })
 
-app.get('/blogs/create/', (req, res) => {
-    res.render('create', {title: 'create'})
-})
+// blog routes
+app.use(blogRoutes);
+
 // 404
 app.use((req, res) => {
     // res.status(404).sendFile('./views/404.html', {root: __dirname})
