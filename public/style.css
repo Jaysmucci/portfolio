@@ -468,7 +468,8 @@ section#blog {
     justify-content: center;
     display: block;
     margin: 12rem;
-    background: #64d96438;
+    background: #fff;
+    color: black;
     height: 12rem;
     width: auto;
 }
@@ -483,6 +484,45 @@ p.blog-body {
     font-weight: lighter;
     font-family: cursive;
     font-size: 0.9rem;
+}
+/* new design */
+.blog-holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: justify;
+    gap: 2rem;
+}
+div#items {
+    padding: 1rem;
+    display: inline-block;
+    background: white;
+    box-shadow: 0 0 1rem #4770bd52;
+}
+.blog-container {
+    display: grid;
+    gap: 0.7rem;
+    color: black;
+}
+.blog-content {
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+}
+p.snippet {
+    font-weight: bolder;
+}
+h6.blog-body {
+    font-weight: lighter;
+    font-size: 0.8rem;
+    word-spacing: -0.1rem;
+}
+input[type="button"] {
+    height: 1.8rem;
+    width: 4rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
 }
 /* footer */
 footer.footer{

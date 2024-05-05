@@ -6,7 +6,6 @@ const blogRoutes = require('./routes/blogRoutes')
 const app = express();
 
 // connect to mongoDB
-// const mongoUIR  = 'mongodb+srv://<jaysportfolio>:<port1234>@portfolio.l34rgxu.mongodb.net/';
 const mongoUIR = 'mongodb+srv://jaysportfolio:port1234@portfolio.l34rgxu.mongodb.net/Jays-portfolio?retryWrites=true&w=majority&appName=portfolio'
 mongoose.connect(mongoUIR)
 .then((result) => console.log('connected successfully')).catch(

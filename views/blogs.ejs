@@ -6,17 +6,27 @@
     <div class="blogs-content">
         <h1>All Blogs</h1>
         <div class="blog-holder">
-            <% if(blog.length > 0) { %>
-                <div class="blog-title">
-                    <% blog.forEach(log  => { %>
-                        <a class="single" href="/blogs/<%= log._id %>">
-                            <h3 class="title"><%= log.title %></h3>
-                        </a>
-                        <p class="snippet"><%= log.snippet %></p>
-                        <h6 class="blog-body"><%= log.body %></h6>
-                <% }) %>
-                </div>
-                <% } else { %>
+            <% if(blog.length > 0) { %>          
+                <% for(var i = blog.length -1; i > 0; i--) { %>
+                    <div class="items" id="items">
+                        <div class="blog-container">
+
+                            <div class="blog-content">
+                                <a class="single" href="/blogs/<%= blog[i]._id %>">
+                                    <h3 class="title"><%= blog[i].title %></h3>
+                                </a>
+                            </div>
+
+                            <p class="snippet"><%= blog[i].snippet %></p>
+                            <h6 class="blog-body"><%= blog[i].body.substring(0, 100) %></h6>
+
+                            <a href="/blogs/<%= blog[i]._id %>" class="read-blog-next">
+                                <input type="button" value="Read">
+                            </a>
+                        </div>
+                    </div>
+                <% } %>
+            <% } else { %>
                     <p>blogs not found!</p>
             <% } %>
         </div>
