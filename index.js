@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const blogRoutes = require('./routes/blogRoutes') 
+const blogRoutes = require('./routes/blogRoutes');
+
 // express app
 const app = express();
 
@@ -12,6 +13,9 @@ mongoose.connect(mongoUIR)
     (err) => console.log(err)
 );
 
+
+app.set('views', './views') // specify the views directory
+app.set('view engine', 'ntl') // register the template engine
 // register view engine
 app.set('view engine', 'ejs');
 
