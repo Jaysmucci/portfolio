@@ -58,6 +58,5 @@ app.use(blogRoutes);
 
 // 404
 app.use((req, res) => {
-    // res.status(404).sendFile('./views/404.html', {root: __dirname})
     res.render('404', {title: '404'})
 })
